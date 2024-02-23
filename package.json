@@ -17,5 +17,5 @@
     "webpack": "^5.90.1",
     "webpack-cli": "^5.1.4"
   },
-  "workspaces": ["src/indexer", "src/publisher"]
+  "workspaces": ["src/indexer", "src/publisher", "src/ipfs"]
 }

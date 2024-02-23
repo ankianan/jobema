@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "npx webpack",
-    "serve": "npx http-server",
+    "serve": "npx http-server -S -C localhost.pem -K localhost-key.pem",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -15,5 +15,19 @@
     "http-server": "^14.1.1",
     "webpack": "^5.90.1",
     "webpack-cli": "^5.1.4"
-  }
+  },
+  "dependencies": {
+    "@chainsafe/libp2p-noise": "^15.0.0",
+    "@chainsafe/libp2p-yamux": "^6.0.2",
+    "@helia/json": "^3.0.0",
+    "@libp2p/bootstrap": "^10.0.15",
+    "@libp2p/identify": "^1.0.14",
+    "@libp2p/tcp": "^9.0.15",
+    "@libp2p/websockets": "^8.0.15",
+    "blockstore-core": "^4.4.0",
+    "datastore-core": "^9.2.8",
+    "helia": "^4.0.1",
+    "libp2p": "^1.2.3"
+  },
+  "type": "module"
 }

@@ -2,12 +2,17 @@ import { indexJobPostingUpdate } from './indexing.js';
 import  { connectDB, getIndex_lastUpdate } from './connectDB.js';
 import { JobPosting } from "./model/JobPosting.js";
 
+/**
+ * 
+ * @param {JobPosting} data 
+ * @returns 
+ */
 export async function addJobPosting(data) {
     // Create a database
     const db = connectDB();
 
     // Add an entry with key 'a' and value 1
-    const jobPosting = JobPosting.create(data)
+    const jobPosting = data;
     await db.put(jobPosting.id, jobPosting);
     await indexJobPostingUpdate(jobPosting);
 
@@ -15,7 +20,6 @@ export async function addJobPosting(data) {
 }
 
 export async function updateJobPosting(updatedData) {
-    //console.log(updatedData)
     // Create a database
     const db = connectDB();
 

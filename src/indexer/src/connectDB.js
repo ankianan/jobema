@@ -1,6 +1,12 @@
 import {Level} from 'level';
 
+/**
+ * @type {Level<string, string>}
+ */
 let db = null;
+/**
+ * @type {import("abstract-level").AbstractSublevel<Level<string, string>, string | Buffer | Uint8Array, string, string>}
+ */
 let level_last_update = null;
 export function connectDB() {
     if(!db){
