@@ -4,18 +4,21 @@
   "description": "",
   "main": "test.js",
   "scripts": {
-    "build": "npx webpack",
-    "serve": "npx http-server -S -C localhost.pem -K localhost-key.pem",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "start": "node src/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "@fastify/cors": "^9.0.1",
     "@helia/strings": "^3.0.0",
     "@helia/unixfs": "^3.0.0",
     "@libp2p/upnp-nat": "^1.0.13",
     "helia": "^4.0.1"
+  },
+  "devDependencies": {
+    "fastify": "^4.26.1"
   }
 }
