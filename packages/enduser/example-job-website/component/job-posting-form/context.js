@@ -1,6 +1,6 @@
 export default {
     "@context": {
-      "@vocab": "https://schema.org/",
+      "@vocab": "http://schema.org/",
       "title": "title",
       "company": "hiringOrganization",
       "desc": "description",

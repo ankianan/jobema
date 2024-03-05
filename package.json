@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run test --workspaces",
-    "start": "npm run start -w indexer & npm run start -w ipfs & npm run start -w publusher"
+    "start": "npm run start -w indexer & npm run start -w ipfs & npm run start -w enduser"
   },
   "keywords": [],
   "author": "",
@@ -18,5 +18,5 @@
     "webpack": "^5.90.1",
     "webpack-cli": "^5.1.4"
   },
-  "workspaces": ["packages/indexer", "packages/publisher", "packages/ipfs"]
+  "workspaces": ["packages/indexer", "packages/controller", "packages/enduser", "packages/ipfs"]
 }

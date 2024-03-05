@@ -1,12 +1,12 @@
 import jsonld from 'jsonld';
-import { addJobPosting } from '../../indexer/src/util.js';
-import { JobPosting } from '../../indexer/src/model/JobPosting.js';
 /**
  * @param {jsonld.JsonLdDocument} compacted
  */
 export async function publish(compacted) {
+    await validateSchema(compacted);
     const expanded = await jsonld.expand(compacted);
-    // Validate schema
+    
+    
     // Publish to IPFS
     const ipfs_cid = await publishJson(expanded);
     
@@ -19,6 +19,16 @@ export async function publish(compacted) {
 }
 
 /**
+ * @param {jsonld.JsonLdDocument} compacted
+ * @throws 'Missing Schema Type'
+ */
+async function validateSchema(compacted) {
+    if (!('@type' in compacted)) {
+        throw new Error('Missing Schema Type');
+    }
+}
+
+/**
  * 
  * @param {{ipfs_cid: string}} jobPosting 
  * @returns 
@@ -28,6 +38,9 @@ export async function read(jobPosting) {
     .then((response) => response.json());
 }
 
+/**
+ * @param {number} since
+ */
 export async function pollMetadata(since) {
     return fetch(`http://localhost:3001/poll/${since}`)
       .then((response) => response.json());
@@ -62,5 +75,18 @@ async function indexJobPosting(metadata) {
         body: JSON.stringify(metadata)
     }).then((response) => response.text());
     return id;
+}
+/**
+ * This allows any type of posting to be published in a standard format
+ * @param {any} posting
+ * @param {any} context,
+ * @param {import('./constants.js').PostingTypes} type
+ */
+export function createDoc(posting, context, type) {
+  return {
+    "@type": type,
+    ...context,
+    ...posting
+  };
 }
 
